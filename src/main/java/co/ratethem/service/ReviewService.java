@@ -2,6 +2,7 @@ package co.ratethem.service;
 
 import co.ratethem.entity.Review;
 import co.ratethem.payload.ReviewAddRequest;
+import co.ratethem.payload.ReviewJson;
 import co.ratethem.repository.ReviewRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class ReviewService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public void add(ReviewAddRequest reviewAddRequest) {
+    public void add(ReviewJson reviewAddRequest) {
 
         //TODO: validate dto
 
