@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -43,17 +44,19 @@ public class ReviewController {
 	@GetMapping(value = "/all")
 	public ResponseEntity<List<Review>> viewAll() {
 	
-		return new ResponseEntity<List<Review>>(reviewRepository.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(reviewRepository.findAll(), HttpStatus.OK);
 	}
 	
 
 		
 	@CrossOrigin
-	@RequestMapping(value = "/getDetails/movie/{id}", method = RequestMethod.GET)
-	@ResponseStatus(value = HttpStatus.OK)
-	public Optional<Review> getReviewById(@PathVariable Long id) {
+	@RequestMapping(value = "/getLastAdded/{page}/{amount}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> getLastAddedReviews(
+			@PathVariable Integer page,
+			@PathVariable Integer amount) {
 
-		return reviewRepository.findById(id);
+		Map<String, Object> lastAdded = reviewService.getLastCreated(page, amount);
+		return new ResponseEntity<>(lastAdded, HttpStatus.OK);
 	}
 	
 	@CrossOrigin
