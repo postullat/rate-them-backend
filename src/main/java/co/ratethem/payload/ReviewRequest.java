@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ReviewJson {
+public class ReviewRequest {
     private String vacancyName;
     private String companyName;
     private String cityName;

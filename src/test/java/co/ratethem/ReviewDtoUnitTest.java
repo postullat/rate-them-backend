@@ -32,21 +32,21 @@ public class ReviewDtoUnitTest {
         reviewDto.setEndDate(now2Dto);
 
         reviewDto.setHrName("Ольга Данилишн");
-        reviewDto.setHrIceBrake(4.5);
-        reviewDto.setHrAttitude(3.5);
-        reviewDto.setHrPunctuality(2.5);
-        reviewDto.setHrImpression(1.5);
+        reviewDto.setHrIceBrake(4);
+        reviewDto.setHrAttitude(3);
+        reviewDto.setHrPunctuality(2);
+        reviewDto.setHrImpression(1);
         reviewDto.setHrComment("Може бути");
 
         reviewDto.setTechInterviewerName("Oleg Davydiv");
-        reviewDto.setTechIceBrake(4.5);
-        reviewDto.setTechAttitude(3.5);
-        reviewDto.setTechQuestionsQuality(2.5);
-        reviewDto.setTechImpression(1.5);
+        reviewDto.setTechIceBrake(4);
+        reviewDto.setTechAttitude(3);
+        reviewDto.setTechQuestionsQuality(2);
+        reviewDto.setTechImpression(1);
         reviewDto.setTechComment("Дуже розчарований");
 
-        reviewDto.setFeedbackOnTime(3.0);
-        reviewDto.setFeedbackDetailization(2.0);
+        reviewDto.setFeedbackOnTime(3);
+        reviewDto.setFeedbackDetailization(2);
         reviewDto.setFeedbackComment("Жодного фідбеку, проста відписка");
         //Dto End
 
@@ -64,21 +64,21 @@ public class ReviewDtoUnitTest {
         review.setEndDate(now2Entity);
 
         review.setHrName("Ольга Данилишн");
-        review.setHrIceBrake(4.5);
-        review.setHrAttitude(3.5);
-        review.setHrPunctuality(2.5);
-        review.setHrImpression(1.5);
+        review.setHrIceBrake(4);
+        review.setHrAttitude(3);
+        review.setHrPunctuality(2);
+        review.setHrImpression(1);
         review.setHrComment("Може бути");
 
         review.setTechInterviewerName("Oleg Davydiv");
-        review.setTechIceBrake(4.5);
-        review.setTechAttitude(3.5);
-        review.setTechQuestionsQuality(2.5);
-        review.setTechImpression(1.5);
+        review.setTechIceBrake(4);
+        review.setTechAttitude(3);
+        review.setTechQuestionsQuality(2);
+        review.setTechImpression(1);
         review.setTechComment("Дуже розчарований");
 
-        review.setFeedbackOnTime(3.0);
-        review.setFeedbackDetailization(2.0);
+        review.setFeedbackOnTime(3);
+        review.setFeedbackDetailization(2);
         review.setFeedbackComment("Жодного фідбеку, проста відписка");
         //Entity End
     }
@@ -96,21 +96,21 @@ public class ReviewDtoUnitTest {
         assertEquals(review.getEndDate(), reviewDto.getEndDate());
 
         assertEquals(review.getHrName(), reviewDto.getHrName());
-        assertEquals(review.getHrIceBrake(), reviewDto.getHrIceBrake(), 0.2);
-        assertEquals(review.getHrAttitude(), reviewDto.getHrAttitude(), 0.2);
-        assertEquals(review.getHrPunctuality(), reviewDto.getHrPunctuality(), 0.2);
-        assertEquals(review.getHrImpression(), reviewDto.getHrImpression(), 0.2);
+        assertEquals(review.getHrIceBrake(), reviewDto.getHrIceBrake());
+        assertEquals(review.getHrAttitude(), reviewDto.getHrAttitude());
+        assertEquals(review.getHrPunctuality(), reviewDto.getHrPunctuality());
+        assertEquals(review.getHrImpression(), reviewDto.getHrImpression());
         assertEquals(review.getHrComment(), reviewDto.getHrComment());
 
         assertEquals(review.getTechInterviewerName(), reviewDto.getTechInterviewerName());
-        assertEquals(review.getTechIceBrake(), reviewDto.getTechIceBrake(), 0.2);
-        assertEquals(review.getTechAttitude(), reviewDto.getTechAttitude(), 0.2);
-        assertEquals(review.getTechQuestionsQuality(), reviewDto.getTechQuestionsQuality(), 0.2);
-        assertEquals(review.getTechImpression(), reviewDto.getTechImpression(), 0.2);
+        assertEquals(review.getTechIceBrake(), reviewDto.getTechIceBrake());
+        assertEquals(review.getTechAttitude(), reviewDto.getTechAttitude());
+        assertEquals(review.getTechQuestionsQuality(), reviewDto.getTechQuestionsQuality());
+        assertEquals(review.getTechImpression(), reviewDto.getTechImpression());
         assertEquals(review.getTechComment(), reviewDto.getTechComment());
 
-        assertEquals(review.getFeedbackOnTime(), reviewDto.getFeedbackOnTime(), 0.2);
-        assertEquals(review.getFeedbackDetailization(), reviewDto.getFeedbackDetailization(), 0.2);
+        assertEquals(review.getFeedbackOnTime(), reviewDto.getFeedbackOnTime());
+        assertEquals(review.getFeedbackDetailization(), reviewDto.getFeedbackDetailization());
         assertEquals(review.getFeedbackComment(), reviewDto.getFeedbackComment());
 
     }
@@ -128,21 +128,21 @@ public class ReviewDtoUnitTest {
         assertEquals(reviewDto.getEndDate(), review.getEndDate());
 
         assertEquals(reviewDto.getHrName(), review.getHrName());
-        assertEquals(reviewDto.getHrIceBrake(), review.getHrIceBrake(), 0.2);
-        assertEquals(reviewDto.getHrAttitude(), review.getHrAttitude(), 0.2);
-        assertEquals(reviewDto.getHrPunctuality(), review.getHrPunctuality(), 0.2);
-        assertEquals(reviewDto.getHrImpression(), review.getHrImpression(), 0.2);
+        assertEquals(reviewDto.getHrIceBrake(), review.getHrIceBrake());
+        assertEquals(reviewDto.getHrAttitude(), review.getHrAttitude());
+        assertEquals(reviewDto.getHrPunctuality(), review.getHrPunctuality());
+        assertEquals(reviewDto.getHrImpression(), review.getHrImpression());
         assertEquals(reviewDto.getHrComment(), review.getHrComment());
 
         assertEquals(reviewDto.getTechInterviewerName(), review.getTechInterviewerName());
-        assertEquals(reviewDto.getTechIceBrake(), review.getTechIceBrake(), 0.2);
-        assertEquals(reviewDto.getTechAttitude(), review.getTechAttitude(), 0.2);
-        assertEquals(reviewDto.getTechQuestionsQuality(), review.getTechQuestionsQuality(), 0.2);
-        assertEquals(reviewDto.getTechImpression(), review.getTechImpression(), 0.2);
+        assertEquals(reviewDto.getTechIceBrake(), review.getTechIceBrake());
+        assertEquals(reviewDto.getTechAttitude(), review.getTechAttitude());
+        assertEquals(reviewDto.getTechQuestionsQuality(), review.getTechQuestionsQuality());
+        assertEquals(reviewDto.getTechImpression(), review.getTechImpression());
         assertEquals(reviewDto.getTechComment(), review.getTechComment());
 
-        assertEquals(reviewDto.getFeedbackOnTime(), review.getFeedbackOnTime(), 0.2);
-        assertEquals(reviewDto.getFeedbackDetailization(), review.getFeedbackDetailization(), 0.2);
+        assertEquals(reviewDto.getFeedbackOnTime(), review.getFeedbackOnTime());
+        assertEquals(reviewDto.getFeedbackDetailization(), review.getFeedbackDetailization());
         assertEquals(reviewDto.getFeedbackComment(), review.getFeedbackComment());
 
     }

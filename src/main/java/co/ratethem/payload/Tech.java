@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 public class Tech{
     private String interviewerName;
-    private double iceBrake;
-    private double attitude;
-    private double questionsQuality;
-    private double impression;
+    private int iceBrake;
+    private int attitude;
+    private int questionsQuality;
+    private int impression;
     private String comment;
 }

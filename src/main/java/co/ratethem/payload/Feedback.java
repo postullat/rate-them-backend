@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Feedback{
-    private double onTime;
-    private double detailization;
+    private int onTime;
+    private int detailization;
     private String comment;
 }

@@ -32,27 +32,35 @@ public class Review implements Serializable {
 
 	//HR Start
 	private String hrName;
-	private double hrIceBrake;
-	private double hrAttitude;
-	private double hrPunctuality;
-	private double hrImpression;
+	private int hrIceBrake;
+	private int hrAttitude;
+	private int hrPunctuality;
+	private int hrImpression;
 	private String hrComment;
+
+	private double hrRatingTotal;
 	//HR End
 
 	//Tech Start
 	private String techInterviewerName;
-	private double techIceBrake;
-	private double techAttitude;
-	private double techQuestionsQuality;
-	private double techImpression;
+	private int techIceBrake;
+	private int techAttitude;
+	private int techQuestionsQuality;
+	private int techImpression;
 	private String techComment;
+
+	private double techRatingTotal;
 	//Tech End
 
 	//Feedback Start
-	private double feedbackOnTime;
-	private double feedbackDetailization;
+	private int feedbackOnTime;
+	private int feedbackDetailization;
 	private String feedbackComment;
+
+	private double feedbackRatingTotal;
 	//Feedback End
+
+	private double companyRatingTotal;
 
 	private Date created;
 	private Date updated;

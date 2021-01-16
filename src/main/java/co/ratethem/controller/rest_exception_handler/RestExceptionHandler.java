@@ -1,9 +1,7 @@
 package co.ratethem.controller.rest_exception_handler;
 
 import co.ratethem.controller.rest_exception_handler.error.ApiError;
-import co.ratethem.controller.rest_exception_handler.exception.AssessmentNotFoundException;
-import co.ratethem.controller.rest_exception_handler.exception.EntityNotFoundException;
-import co.ratethem.controller.rest_exception_handler.exception.InvalidDomainNameException;
+import co.ratethem.controller.rest_exception_handler.exception.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -36,6 +34,22 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException ex) {
         String error = ex.getMessage();
         ApiError apiError = new ApiError(HttpStatus.NOT_FOUND);
+        apiError.setMessage(error);
+        return buildResponseEntity(apiError);
+    }
+
+    @ExceptionHandler(EmptyValueException.class)
+    protected ResponseEntity<Object> handleEmptyValueException(EntityNotFoundException ex) {
+        String error = ex.getMessage();
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
+        apiError.setMessage(error);
+        return buildResponseEntity(apiError);
+    }
+
+    @ExceptionHandler(InvalidValueException.class)
+    protected ResponseEntity<Object> handleInvalidValueException(InvalidValueException ex) {
+        String error = ex.getMessage();
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
         apiError.setMessage(error);
         return buildResponseEntity(apiError);
     }

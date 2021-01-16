@@ -1,8 +1,9 @@
 package co.ratethem.controller;
 
+import co.ratethem.controller.rest_exception_handler.exception.EmptyValueException;
+import co.ratethem.controller.rest_exception_handler.exception.InvalidValueException;
 import co.ratethem.entity.Review;
-import co.ratethem.payload.ReviewAddRequest;
-import co.ratethem.payload.ReviewJson;
+import co.ratethem.payload.ReviewRequest;
 import co.ratethem.repository.ReviewRepository;
 import co.ratethem.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 @RestController
@@ -36,7 +36,7 @@ public class ReviewController {
 	@CrossOrigin
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void addReview(@RequestBody ReviewJson reviewAddRequest) {
+	public void addReview(@RequestBody ReviewRequest reviewAddRequest) throws EmptyValueException, InvalidValueException {
 		reviewService.add(reviewAddRequest);
 	}
 	

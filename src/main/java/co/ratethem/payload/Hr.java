@@ -3,12 +3,12 @@ package co.ratethem.payload;
 import lombok.Data;
 
 @Data
-public class Hr{
+public class Hr {
     private String name;
-    private double iceBrake;
-    private double attitude;
-    private double punctuality;
-    private double impression;
+    private int iceBrake;
+    private int attitude;
+    private int punctuality;
+    private int impression;
     private String comment;
 }
 
