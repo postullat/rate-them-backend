@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ReviewValidator_2_CityNameUnitTest {
+public class ReviewValidator_2_CompanyNameUnitTest {
 
     private Integer VACANCY_NAME_MIN = 5;
 
@@ -28,8 +28,13 @@ public class ReviewValidator_2_CityNameUnitTest {
 
     private Integer CITY_NAME_MAX = 100;
 
+    private Integer COMPANY_NAME_MIN = 3;
+
+    private Integer COMPANY_NAME_MAX = 100;
+
     @Spy
     private final ReviewValidator reviewValidator = new ReviewValidator();
+
     @Before
     public void setUp() {
         ReflectionTestUtils.setField(reviewValidator, "VACANCY_NAME_MIN", VACANCY_NAME_MIN);
@@ -38,83 +43,89 @@ public class ReviewValidator_2_CityNameUnitTest {
         ReflectionTestUtils.setField(reviewValidator, "CITY_NAME_MIN", CITY_NAME_MIN);
         ReflectionTestUtils.setField(reviewValidator, "CITY_NAME_MAX", CITY_NAME_MAX);
 
+        ReflectionTestUtils.setField(reviewValidator, "COMPANY_NAME_MIN", COMPANY_NAME_MIN);
+        ReflectionTestUtils.setField(reviewValidator, "COMPANY_NAME_MAX", COMPANY_NAME_MAX);
     }
 
-
-    //City Start
+    //Company Start
     @Test
-    public void whenCityNameIsEmpty_thenThrowException_And_assertionSucceeds() {
+    public void whenCompanyNameIsEmpty_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
-        req.setCityName("");
+        req.setCityName("Lviv");
+        req.setCompanyName("");
 
         Exception exception = assertThrows(EmptyValueException.class, () -> {
             reviewValidator.validateRequest(req);
         });
 
-        String expectedMessage = "City name can't be null or empty";
+        String expectedMessage = "Company name can't be null or empty";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    public void whenCityNameIsNull_thenThrowException_And_assertionSucceeds() {
+    public void whenCompanyNameIsNull_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
-        req.setCityName(null);
+        req.setCityName("Lviv");
+        req.setCompanyName(null);
 
         Exception exception = assertThrows(EmptyValueException.class, () -> {
             reviewValidator.validateRequest(req);
         });
 
-        String expectedMessage = "City name can't be null or empty";
+        String expectedMessage = "Company name can't be null or empty";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    public void whenCityNameIsLessThanFiveSymbols_thenThrowException_And_assertionSucceeds() {
+    public void whenCompanyNameIsLessThanFiveSymbols_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
-        req.setCityName("Ky");
+        req.setCityName("Lviv");
+        req.setCompanyName("Ni");
 
-        assertEquals(req.getCityName().length() < CITY_NAME_MIN, true);
+        assertEquals(req.getCompanyName().length() < COMPANY_NAME_MIN, true);
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             reviewValidator.validateRequest(req);
         });
 
-        String expectedMessage = "City name should be from "+CITY_NAME_MIN+" till "+CITY_NAME_MAX+" symbols";
+        String expectedMessage = "Company name should be from "+COMPANY_NAME_MIN+" till "+COMPANY_NAME_MAX+" symbols";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @Test
-    public void whenCityNameIsMoreThan_100_Symbols_thenThrowException_And_assertionSucceeds() {
+    public void whenCompanyNameIsMoreThan_100_Symbols_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
+        req.setCityName("Lviv");
 
         StringBuffer sb = new StringBuffer();
-        for(int i=0; i<21; i++) {
-            //5 symbols * 21 = 105
-            sb.append("Kyiv ");
+        for(int i=0; i<13; i++) {
+            //8 symbols * 13 = 104
+            sb.append("System X");
         }
-        req.setCityName(sb.toString());
+        req.setCompanyName(sb.toString());
 
-        assertEquals(req.getCityName().length() > CITY_NAME_MAX, true);
+        assertEquals(req.getCompanyName().length() > COMPANY_NAME_MAX, true);
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             reviewValidator.validateRequest(req);
         });
 
-        String expectedMessage = "City name should be from "+CITY_NAME_MIN+" till "+CITY_NAME_MAX+" symbols";
+        String expectedMessage = "Company name should be from "+COMPANY_NAME_MIN+" till "+COMPANY_NAME_MAX+" symbols";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
 
     }
-    //City End
+    //Company End
+
 }

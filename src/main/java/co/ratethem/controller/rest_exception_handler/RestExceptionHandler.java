@@ -39,7 +39,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(EmptyValueException.class)
-    protected ResponseEntity<Object> handleEmptyValueException(EntityNotFoundException ex) {
+    protected ResponseEntity<Object> handleEmptyValueException(EmptyValueException ex) {
         String error = ex.getMessage();
         ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST);
         apiError.setMessage(error);

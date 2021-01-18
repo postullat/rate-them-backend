@@ -22,7 +22,7 @@ public class ReviewValidator {
     @Value("${fieldsRestrictions.cityMin}")
     private Integer CITY_NAME_MIN;
 
-    @Value("${fieldsRestrictions.cityMin}")
+    @Value("${fieldsRestrictions.cityMax}")
     private Integer CITY_NAME_MAX;
 
     @Value("${fieldsRestrictions.companyMin}")
@@ -34,8 +34,8 @@ public class ReviewValidator {
     public void validateRequest(ReviewRequest reviewJson) throws EmptyValueException, InvalidValueException {
 
         validateVacancyName(reviewJson.getVacancyName());
-        validateCityName(reviewJson.getCityName());
         validateCompanyName(reviewJson.getCompanyName());
+        validateCityName(reviewJson.getCityName());
 
         validateDatesFromTo(reviewJson.getStartDate(), reviewJson.getEndDate(), new Date()/*now()*/);
 
@@ -45,24 +45,24 @@ public class ReviewValidator {
         }
 
         if (reviewJson.getHr().getIceBrake() <= 0 || reviewJson.getHr().getIceBrake() > 5) {
-            throw new InvalidValueException("HR Ice Brake value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("HR Ice Brake value should be set between 1 and 5");
         }
 
         if (reviewJson.getHr().getAttitude() <= 0 || reviewJson.getHr().getAttitude() > 5) {
-            throw new InvalidValueException("HR Attitude value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("HR Attitude value should be set between 1 and 5");
         }
 
         if (reviewJson.getHr().getPunctuality() <= 0 || reviewJson.getHr().getPunctuality() > 5) {
-            throw new InvalidValueException("HR Punctuality value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("HR Punctuality value should be set between 1 and 5");
         }
 
         if (reviewJson.getHr().getImpression() <= 0 || reviewJson.getHr().getImpression() > 5) {
-            throw new InvalidValueException("HR Impression value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("HR Impression value should be set between 1 and 5");
         }
 
         if (!StringUtils.isEmpty(reviewJson.getHr().getComment())) {
-            if (reviewJson.getHr().getComment().length() > 500)
-                throw new EmptyValueException("Comment about HR can't be more than 500 symbols");
+            if (reviewJson.getHr().getComment().length() > 250)
+                throw new EmptyValueException("Comment about HR can't be more than 250 symbols");
         }
         //HR validation End
 
@@ -72,39 +72,39 @@ public class ReviewValidator {
         }
 
         if (reviewJson.getTech().getIceBrake() <= 0 || reviewJson.getTech().getIceBrake() > 5) {
-            throw new InvalidValueException("Tech Interviewer Ice Brake value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("Tech Interviewer Ice Brake value should be set between 1 and 5");
         }
 
         if (reviewJson.getTech().getAttitude() <= 0 || reviewJson.getTech().getAttitude() > 5) {
-            throw new InvalidValueException("Tech Interviewer Attitude value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("Tech Interviewer Attitude value should be set between 1 and 5");
         }
 
         if (reviewJson.getTech().getQuestionsQuality() <= 0 || reviewJson.getTech().getQuestionsQuality() > 5) {
-            throw new InvalidValueException("Tech Interviewer Questions Quality value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("Tech Interviewer Questions Quality value should be set between 1 and 5");
         }
 
         if (reviewJson.getTech().getImpression() <= 0 || reviewJson.getTech().getImpression() > 5) {
-            throw new InvalidValueException("Tech Interviewer Impression value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("Tech Interviewer Impression value should be set between 1 and 5");
         }
 
         if (!StringUtils.isEmpty(reviewJson.getTech().getComment())) {
-            if (reviewJson.getTech().getComment().length() > 500)
-                throw new EmptyValueException("Comment about Tech Interviewer can't be more than 500 symbols");
+            if (reviewJson.getTech().getComment().length() > 250)
+                throw new EmptyValueException("Comment about Tech Interviewer can't be more than 250 symbols");
         }
         //Tech validation End
 
         //Feedback validation Start
         if (reviewJson.getFeedback().getOnTime() <= 0 || reviewJson.getFeedback().getOnTime() > 5) {
-            throw new InvalidValueException("Feedback On Time value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("Feedback On Time value should be set between 1 and 5");
         }
 
         if (reviewJson.getFeedback().getDetailization() <= 0 || reviewJson.getFeedback().getDetailization() > 5) {
-            throw new InvalidValueException("Feedback Detailization value should be an integer and value should be between 1 and 5");
+            throw new InvalidValueException("Feedback Detailization value should be set between 1 and 5");
         }
 
         if (!StringUtils.isEmpty(reviewJson.getFeedback().getComment())) {
-            if (reviewJson.getFeedback().getComment().length() > 500)
-                throw new EmptyValueException("Comment about Feedback can't be more than 500 symbols");
+            if (reviewJson.getFeedback().getComment().length() > 250)
+                throw new EmptyValueException("Comment about Feedback can't be more than 250 symbols");
         }
         //Feedback validation End
     }
@@ -117,7 +117,7 @@ public class ReviewValidator {
         if (StringUtils.isEmpty(vacancyName)) {
             throw new EmptyValueException("Vacancy name can't be null or empty");
         }
-        if (vacancyName.length() <= VACANCY_NAME_MIN || vacancyName.length() > VACANCY_NAME_MAX) {
+        if (vacancyName.length() < VACANCY_NAME_MIN || vacancyName.length() > VACANCY_NAME_MAX) {
             throw new IllegalArgumentException("Vacancy name should be from " + VACANCY_NAME_MIN + " till " + VACANCY_NAME_MAX + " symbols");
         }
         //Vacancy End
@@ -128,7 +128,7 @@ public class ReviewValidator {
         if (StringUtils.isEmpty(cityName)) {
             throw new EmptyValueException("City name can't be null or empty");
         }
-        if (cityName.length() <= CITY_NAME_MIN || cityName.length() > CITY_NAME_MAX) {
+        if (cityName.length() < CITY_NAME_MIN || cityName.length() > CITY_NAME_MAX) {
             throw new IllegalArgumentException("City name should be from " + CITY_NAME_MIN + " till " + CITY_NAME_MAX + " symbols");
         }
         //City End
@@ -139,7 +139,7 @@ public class ReviewValidator {
         if (StringUtils.isEmpty(companyName)) {
             throw new EmptyValueException("Company name can't be null or empty");
         }
-        if (companyName.length() <= COMPANY_NAME_MIN || companyName.length() > COMPANY_NAME_MAX) {
+        if (companyName.length() < COMPANY_NAME_MIN || companyName.length() > COMPANY_NAME_MAX) {
             throw new IllegalArgumentException("Company name should be from " + COMPANY_NAME_MIN + " till " + COMPANY_NAME_MAX + " symbols");
         }
         //Company Name End

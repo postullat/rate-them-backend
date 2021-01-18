@@ -32,6 +32,7 @@ public class ReviewService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
     private ReviewValidator validator;
 
     public void add(ReviewRequest reviewJson) throws EmptyValueException, InvalidValueException {
