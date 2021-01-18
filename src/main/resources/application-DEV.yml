@@ -5,6 +5,16 @@ swagger:
   host:
     url: http://localhost:8080
 
+
+fieldsRestrictions:
+  vacancyMin: 5
+  vacancyMax: 100
+
+  cityMin: 3
+  cityMax: 100
+
+  companyMin: 3
+  companyMax: 100
 # ===============================
 # JPA / HIBERNATE
 # ===============================
