@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "cities")
@@ -20,4 +21,7 @@ public class City {
 
     @Enumerated(EnumType.STRING)
     private EntityStatus status;
+
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 }

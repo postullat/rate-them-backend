@@ -7,8 +7,8 @@ import java.util.Date;
 @Data
 public class ReviewRequest {
     private String vacancyName;
-    private String companyName;
-    private String cityName;
+    private long companyId;
+    private long cityId;
     private Date startDate;
     private Date endDate;
     private Hr hr;

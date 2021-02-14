@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "companies")
@@ -18,4 +19,7 @@ public class Company {
     private String name;
     private String logoUrl;
     private String siteUrl;
+
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 }

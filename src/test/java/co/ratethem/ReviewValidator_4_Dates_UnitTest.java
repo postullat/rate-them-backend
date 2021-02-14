@@ -55,8 +55,8 @@ public class ReviewValidator_4_Dates_UnitTest {
     public void whenStartDateIsNull_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
-        req.setCityName("Lviv");
-        req.setCompanyName("System X");
+        //req.setCityName("Lviv");
+        //req.setCompanyName("System X");
         req.setStartDate(null);
 
         Exception exception = assertThrows(EmptyValueException.class, () -> {
@@ -73,8 +73,8 @@ public class ReviewValidator_4_Dates_UnitTest {
     public void whenEndDateIsNull_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
-        req.setCityName("Lviv");
-        req.setCompanyName("System X");
+        //req.setCityName("Lviv");
+        //req.setCompanyName("System X");
         req.setStartDate(new Date());
         req.setEndDate(null);
 

@@ -3,7 +3,10 @@ package co.ratethem.service;
 import co.ratethem.controller.rest_exception_handler.exception.EmptyValueException;
 import co.ratethem.controller.rest_exception_handler.exception.InvalidValueException;
 import co.ratethem.payload.ReviewRequest;
+import co.ratethem.repository.CityRespository;
+import co.ratethem.repository.CompanyRepository;
 import org.joda.time.DateTime;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -31,11 +34,25 @@ public class ReviewValidator {
     @Value("${fieldsRestrictions.companyMax}")
     private Integer COMPANY_NAME_MAX;
 
+    @Autowired
+    private CityRespository cityRespository;
+
+    @Autowired
+    private CompanyRepository companyRepository;
+
     public void validateRequest(ReviewRequest reviewJson) throws EmptyValueException, InvalidValueException {
 
         validateVacancyName(reviewJson.getVacancyName());
-        validateCompanyName(reviewJson.getCompanyName());
-        validateCityName(reviewJson.getCityName());
+
+        long cityId = reviewJson.getCityId();
+        long companyId = reviewJson.getCompanyId();
+
+        validateCityId(cityId);
+        validateCompanyId(companyId);
+
+        //this is not used since we use city id and company id
+        //validateCompanyName(reviewJson.getCompanyName());
+        //validateCityName(reviewJson.getCityName());
 
         validateDatesFromTo(reviewJson.getStartDate(), reviewJson.getEndDate(), new Date()/*now()*/);
 
@@ -109,7 +126,25 @@ public class ReviewValidator {
         //Feedback validation End
     }
 
+    private void validateCompanyId(long companyId) throws InvalidValueException {
+        if(companyId <= 0) {
+            throw new InvalidValueException("Company ID can't be <= 0");
+        }
 
+        if(!companyRepository.existsById(companyId)) {
+            throw new InvalidValueException("Company with ID "+companyId+" doesn't exist in the system");
+        }
+    }
+
+    private void validateCityId(long cityId) throws InvalidValueException {
+        if(cityId <= 0) {
+            throw new InvalidValueException("City ID can't be <= 0");
+        }
+
+        if(!cityRespository.existsById(cityId)) {
+            throw new InvalidValueException("City with ID "+cityId+" doesn't exist in the system");
+        }
+    }
 
 
     public void validateVacancyName(String vacancyName) throws EmptyValueException {

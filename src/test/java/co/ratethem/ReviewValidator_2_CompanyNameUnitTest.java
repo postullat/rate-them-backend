@@ -52,8 +52,8 @@ public class ReviewValidator_2_CompanyNameUnitTest {
     public void whenCompanyNameIsEmpty_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
-        req.setCityName("Lviv");
-        req.setCompanyName("");
+        //req.setCityName("Lviv");
+        //req.setCompanyName("");
 
         Exception exception = assertThrows(EmptyValueException.class, () -> {
             reviewValidator.validateRequest(req);
@@ -69,8 +69,8 @@ public class ReviewValidator_2_CompanyNameUnitTest {
     public void whenCompanyNameIsNull_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
-        req.setCityName("Lviv");
-        req.setCompanyName(null);
+        //req.setCityName("Lviv");
+        //req.setCompanyName(null);
 
         Exception exception = assertThrows(EmptyValueException.class, () -> {
             reviewValidator.validateRequest(req);
@@ -86,10 +86,10 @@ public class ReviewValidator_2_CompanyNameUnitTest {
     public void whenCompanyNameIsLessThanFiveSymbols_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
-        req.setCityName("Lviv");
-        req.setCompanyName("Ni");
+        //req.setCityName("Lviv");
+        //req.setCompanyName("Ni");
 
-        assertEquals(req.getCompanyName().length() < COMPANY_NAME_MIN, true);
+        //assertEquals(req.getCompanyName().length() < COMPANY_NAME_MIN, true);
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             reviewValidator.validateRequest(req);
@@ -105,16 +105,16 @@ public class ReviewValidator_2_CompanyNameUnitTest {
     public void whenCompanyNameIsMoreThan_100_Symbols_thenThrowException_And_assertionSucceeds() {
         ReviewRequest req = new ReviewRequest();
         req.setVacancyName("Java Developer");
-        req.setCityName("Lviv");
+        //req.setCityName("Lviv");
 
         StringBuffer sb = new StringBuffer();
         for(int i=0; i<13; i++) {
             //8 symbols * 13 = 104
             sb.append("System X");
         }
-        req.setCompanyName(sb.toString());
+        //req.setCompanyName(sb.toString());
 
-        assertEquals(req.getCompanyName().length() > COMPANY_NAME_MAX, true);
+        //assertEquals(req.getCompanyName().length() > COMPANY_NAME_MAX, true);
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             reviewValidator.validateRequest(req);

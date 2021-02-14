@@ -22,8 +22,8 @@ public class ReviewDtoUnitTest {
         //Dto Start
         reviewDto = new ReviewAddRequest();
 
-        reviewDto.setCompanyName("NiX");
-        reviewDto.setCityName("Львів");
+        //reviewDto.setCompanyName("NiX");
+        //reviewDto.setCityName("Львів");
         reviewDto.setVacancyName("Java Developer");
 
         Date now1Dto = new Date();
@@ -54,8 +54,8 @@ public class ReviewDtoUnitTest {
         //Entity Start
         review = new Review();
 
-        review.setCompanyName("NiX");
-        review.setCityName("Львів");
+        //review.setCompanyName("NiX");
+        //review.setCityName("Львів");
         review.setVacancyName("Java Developer");
 
         Date now1Entity = new Date();
@@ -88,8 +88,8 @@ public class ReviewDtoUnitTest {
 
         reviewDto = modelMapper.map(review, ReviewAddRequest.class);
 
-        assertEquals(review.getCompanyName(), reviewDto.getCompanyName());
-        assertEquals(review.getCityName(), reviewDto.getCityName());
+        //assertEquals(review.getCompanyName(), reviewDto.getCompanyName());
+        //assertEquals(review.getCityName(), reviewDto.getCityName());
         assertEquals(review.getVacancyName(), reviewDto.getVacancyName());
 
         assertEquals(review.getStartDate(), reviewDto.getStartDate());
@@ -120,8 +120,8 @@ public class ReviewDtoUnitTest {
 
         review = modelMapper.map(reviewDto, Review.class);
 
-        assertEquals(reviewDto.getCompanyName(), review.getCompanyName());
-        assertEquals(reviewDto.getCityName(), review.getCityName());
+        //assertEquals(reviewDto.getCompanyName(), review.getCompanyName());
+        //assertEquals(reviewDto.getCityName(), review.getCityName());
         assertEquals(reviewDto.getVacancyName(), review.getVacancyName());
 
         assertEquals(reviewDto.getStartDate(), review.getStartDate());

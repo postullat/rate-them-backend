@@ -7,7 +7,9 @@ import java.util.Date;
 @Data
 public class ReviewResponse {
     private String vacancyName;
+    private String companyId;
     private String companyName;
+    private String cityId;
     private String cityName;
     private Date startDate;
     private Date endDate;

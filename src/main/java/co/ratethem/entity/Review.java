@@ -24,9 +24,16 @@ public class Review implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String companyName;
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "company_id")
+	private Company company;
+
 	private String vacancyName;
-	private String cityName;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "city_id")
+	private City city;
+
 	private Date startDate;
 	private Date endDate;
 

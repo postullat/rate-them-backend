@@ -9,6 +9,7 @@ import co.ratethem.repository.ReviewRepository;
 import io.swagger.models.auth.In;
 import org.joda.time.DateTime;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,6 +40,9 @@ public class ReviewService {
 
         //check if null
         validator.validateRequest(reviewJson);
+
+        //skip getCity and getCompany
+        modelMapper.getConfiguration().setAmbiguityIgnored(true);
 
         //convert dto to entity
         Review review = modelMapper.map(reviewJson, Review.class);
