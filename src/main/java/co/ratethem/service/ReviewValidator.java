@@ -47,8 +47,8 @@ public class ReviewValidator {
         long cityId = reviewJson.getCityId();
         long companyId = reviewJson.getCompanyId();
 
-        validateCityId(cityId);
         validateCompanyId(companyId);
+        validateCityId(cityId);
 
         //this is not used since we use city id and company id
         //validateCompanyName(reviewJson.getCompanyName());
