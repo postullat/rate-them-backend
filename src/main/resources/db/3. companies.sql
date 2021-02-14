@@ -1,0 +1,3 @@
+INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(1,"https://s.dou.ua/CACHE/images/img/static/companies/epam_logo/b84ca0a480152a50ce7495c9c1442178.png","EPAM","https://epam.com");
+INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(2,"https://s.dou.ua/CACHE/images/img/static/companies/logo_vector-01/95e1cacced85b295c83a4e05cb6b4b5b.png","SoftServe","https://www.softserveinc.com");
+INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(3,"https://s.dou.ua/CACHE/images/img/static/companies/globallogic_logo/dc0e8b9f09ed419b27c2aa8e84dd74c5.png","GlobalLogic","https://www.globallogic.com");
