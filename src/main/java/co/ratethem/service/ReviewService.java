@@ -139,6 +139,6 @@ public class ReviewService {
 
     private String maskLastName(String lastName) {
         //Давидова -> Д.
-        return lastName.charAt(0)+".";
+        return lastName.charAt(0)+"";
     }
 }
