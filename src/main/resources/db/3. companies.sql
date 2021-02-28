@@ -27,7 +27,7 @@ INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(24,"
 INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(25,"https://s.dou.ua/CACHE/images/img/static/companies/%D0%BD%D0%BE%D0%B2%D0%B0_%D0%BF%D0%BE%D1%88%D1%82%D0%B0_%D1%86%D0%B5%D0%BD%D1%82%D1%80/c41ba48a39af539ce056310f45a010aa.png","Нова Пошта-Центр","https://novaposhta.ua/");
 INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(26,"https://s.dou.ua/CACHE/images/img/static/companies/AlfaBank_LogoVERT_Red_RU-UA_ETALON_500px%D1%86%D1%86/28537e41b8b82279b9b44f714781122a.png","Альфа-Банк Украина","https://alfabank.ua/");
 
-INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(27,"","GlobalLogic","");
+INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(27,"https://s.dou.ua/CACHE/images/img/static/companies/gameloft_logo/40834bb749c1b83ea6028a606853f8be.png","Gameloft","http://www.gameloft.com/");
 INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(28,"","GlobalLogic","");
 INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(29,"","GlobalLogic","");
 INSERT INTO `ratethem`.`companies`(`id`,`logo_url`,`name`,`site_url`)VALUES(30,"","GlobalLogic","");

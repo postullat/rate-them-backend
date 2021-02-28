@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ReviewService {
@@ -96,12 +97,48 @@ public class ReviewService {
         }.getType();
         List<ReviewResponse> reviewDto = modelMapper.map(reviews, targetListType);
 
+        //Replacing Last Names with Mask
+        List<ReviewResponse> reviewDtoWithMaskedLastNames = reviewDto.stream()
+                .map(s -> {
+            String[] hrFirstAndLastName = s.getHr().getName().split(" ");
+
+            if(hrFirstAndLastName == null || hrFirstAndLastName.length <= 0) {
+                return s;
+            } else {
+                String hrLastName = hrFirstAndLastName[hrFirstAndLastName.length - 1];
+                maskLastName(hrLastName);
+                String maskedLastName = maskLastName(hrLastName);
+                s.getHr().setName(hrFirstAndLastName[0]+" "+maskedLastName);
+            }
+
+            return s;
+
+        }).map(s-> {
+            String[] techFirstAndLastName = s.getTech().getInterviewerName().split(" ");
+
+            if(techFirstAndLastName == null || techFirstAndLastName.length <= 0) {
+                return s;
+            } else {
+                String techLastName = techFirstAndLastName[techFirstAndLastName.length - 1];
+                String maskedLastName = maskLastName(techLastName);
+                s.getTech().setInterviewerName(techFirstAndLastName[0]+" "+maskedLastName);
+            }
+
+            return s;
+
+        }).collect(Collectors.toList());
+
         Map<String, Object> response = new HashMap<>();
-        response.put("reviews", reviewDto);
+        response.put("reviews", reviewDtoWithMaskedLastNames);
         response.put("currentPage", lastAddedReview.getNumber());
         response.put("totalItems", lastAddedReview.getTotalElements());
         response.put("totalPages", lastAddedReview.getTotalPages());
 
         return response;
+    }
+
+    private String maskLastName(String lastName) {
+        //Давидова -> Д.
+        return lastName.charAt(0)+".";
     }
 }

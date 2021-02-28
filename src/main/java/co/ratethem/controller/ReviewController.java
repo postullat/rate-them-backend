@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -34,6 +35,21 @@ public class ReviewController {
 	@CrossOrigin
 	@RequestMapping(value = "/getLastAdded/{page}/{amount}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> getLastAddedReviews(
+			@PathVariable Integer page,
+			@PathVariable Integer amount) {
+
+		Map<String, Object> lastAdded = reviewService.getLastCreated(page, amount);
+		return new ResponseEntity<>(lastAdded, HttpStatus.OK);
+	}
+
+	@CrossOrigin
+	@RequestMapping(value = "/find/by/{page}/{amount}", method = RequestMethod.GET)
+	public ResponseEntity<Map<String, Object>> findReviewsBy(
+			List<Long> companyIds,
+			List<Long> cityIds,
+			String hrName,
+			String techInterviewerName,
+
 			@PathVariable Integer page,
 			@PathVariable Integer amount) {
 
