@@ -2,6 +2,7 @@ package co.ratethem.controller;
 
 import co.ratethem.controller.rest_exception_handler.exception.EmptyValueException;
 import co.ratethem.controller.rest_exception_handler.exception.InvalidValueException;
+import co.ratethem.entity.EmailSubscription;
 import co.ratethem.payload.CityResponse;
 import co.ratethem.service.CityService;
 import co.ratethem.service.EmailSubscriptionService;
@@ -28,6 +29,15 @@ public class EmailSubscriptionController {
 		emailSubscriptionService.addEmailSubscription(email);
 
 		return new ResponseEntity<>("You have successfully subscribed for a newsletters", HttpStatus.OK);
+	}
+
+	@CrossOrigin
+	@GetMapping(path = "/all")
+	public ResponseEntity<EmailSubscription> getAllEmails() throws InvalidValueException, EmptyValueException {
+
+		List<EmailSubscription> emails = emailSubscriptionService.getAll();
+
+		return new ResponseEntity(emails, HttpStatus.OK);
 	}
 
 }
