@@ -4,6 +4,7 @@ import co.ratethem.controller.rest_exception_handler.exception.EmptyValueExcepti
 import co.ratethem.controller.rest_exception_handler.exception.InvalidValueException;
 import co.ratethem.entity.EmailSubscription;
 import co.ratethem.payload.CityResponse;
+import co.ratethem.payload.EmailSubscriptionRequest;
 import co.ratethem.service.CityService;
 import co.ratethem.service.EmailSubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class EmailSubscriptionController {
 
 	@CrossOrigin
 	@PostMapping(path = "/add")
-	public ResponseEntity<String> addEmailSubscription(@RequestBody String email) throws InvalidValueException, EmptyValueException {
+	public ResponseEntity<String> addEmailSubscription(@RequestBody EmailSubscriptionRequest emailSubscriptionRequest) throws InvalidValueException, EmptyValueException {
 
-		emailSubscriptionService.addEmailSubscription(email);
+		emailSubscriptionService.addEmailSubscription(emailSubscriptionRequest);
 
 		return new ResponseEntity<>("You have successfully subscribed for a newsletters", HttpStatus.OK);
 	}
