@@ -32,14 +32,14 @@ public class EmailSubscriptionController {
 		return new ResponseEntity<>("You have successfully subscribed for a newsletters", HttpStatus.OK);
 	}
 
-	@CrossOrigin
+/*	@CrossOrigin
 	@GetMapping(path = "/all")
 	public ResponseEntity<EmailSubscription> getAllEmails() throws InvalidValueException, EmptyValueException {
 
 		List<EmailSubscription> emails = emailSubscriptionService.getAll();
 
 		return new ResponseEntity(emails, HttpStatus.OK);
-	}
+	}*/
 
 }
 	
