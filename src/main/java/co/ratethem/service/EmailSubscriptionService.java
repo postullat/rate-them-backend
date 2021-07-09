@@ -26,9 +26,9 @@ public class EmailSubscriptionService {
             throw new EmptyValueException("Email value can't be null or empty");
         }
 
-        if(!isEmailValid(email)) {
+        /*if(!isEmailValid(email)) {
             throw new InvalidValueException("Email is not valid");
-        }
+        }*/
 
         EmailSubscription emailSubscription = new EmailSubscription();
         emailSubscription.setEmail(email);
