@@ -21,7 +21,6 @@ public class CityController {
 	private CityService cityService;
 
 
-	@CrossOrigin
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public ResponseEntity<List<CityResponse>> findAllCities() {
 

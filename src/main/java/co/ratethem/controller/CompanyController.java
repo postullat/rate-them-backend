@@ -20,7 +20,6 @@ public class CompanyController {
 
 
 		
-	@CrossOrigin
 	@RequestMapping(value = "/name/contains", method = RequestMethod.POST)
 	public ResponseEntity<List<CompanyResponse>> findCompanyByNameLike(@RequestParam(required = false) String chars) {
 

@@ -22,8 +22,6 @@ public class EmailSubscriptionController {
 	@Autowired
 	private EmailSubscriptionService emailSubscriptionService;
 
-
-	@CrossOrigin
 	@PostMapping(path = "/add")
 	public ResponseEntity<String> addEmailSubscription(@RequestBody EmailSubscriptionRequest emailSubscriptionRequest) throws InvalidValueException, EmptyValueException {
 
@@ -32,7 +30,7 @@ public class EmailSubscriptionController {
 		return new ResponseEntity<>("You have successfully subscribed for a newsletters", HttpStatus.OK);
 	}
 
-/*	@CrossOrigin
+/*
 	@GetMapping(path = "/all")
 	public ResponseEntity<EmailSubscription> getAllEmails() throws InvalidValueException, EmptyValueException {
 

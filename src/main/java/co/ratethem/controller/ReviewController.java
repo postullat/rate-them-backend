@@ -24,7 +24,6 @@ public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
 
-	@CrossOrigin
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public void addReview(@RequestBody ReviewRequest reviewAddRequest) throws EmptyValueException, InvalidValueException {
@@ -32,7 +31,6 @@ public class ReviewController {
 	}
 
 		
-	@CrossOrigin
 	@RequestMapping(value = "/getLastAdded/{page}/{amount}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> getLastAddedReviews(
 			@PathVariable Integer page,
@@ -42,7 +40,6 @@ public class ReviewController {
 		return new ResponseEntity<>(lastAdded, HttpStatus.OK);
 	}
 
-	@CrossOrigin
 	@RequestMapping(value = "/find/by/{page}/{amount}", method = RequestMethod.GET)
 	public ResponseEntity<Map<String, Object>> findReviewsBy(
 			List<Long> companyIds,
