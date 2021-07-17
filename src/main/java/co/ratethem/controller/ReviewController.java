@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "api/review")
-@CrossOrigin(origins = {"https://rate-them.in.ua", "http://technicalinterviewsinukrainemustbebetterpreparedandmorepleasant.com"})
+//@CrossOrigin(origins = {"https://rate-them.in.ua", "http://technicalinterviewsinukrainemustbebetterpreparedandmorepleasant.com"})
 public class ReviewController {
 	
 	@Autowired
